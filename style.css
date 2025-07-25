@@ -1,8 +1,17 @@
 body {
   height: 100%;
   width: 100%;
-  background: #080f1a;
+  background: #080f1a url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-size: cover;
+  animation: starsMove 100s linear infinite;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
 }
 
 .container {
@@ -17,6 +26,7 @@ body {
   width: 200px;
   background: #122139;
   border-radius: 300px 300px 0px 0px;
+  position: relative;
 }
 .glass:before {
   content: "";
@@ -73,7 +83,6 @@ body {
   box-shadow: 0px 0px 30px #f594b8;
   left: 80px;
   top: 60px;
-  background: #d52d58;
 }
 .petals > div:nth-child(2), .petals > div:nth-child(4), .petals > div:nth-child(6) {
   background: #b81b43;
@@ -92,54 +101,40 @@ body {
   background: #ab1a3f;
   top: 75px;
   height: 70px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
-  animation: bloom2 3s ease-in-out;
-  animation-fill-mode: forwards;
+  animation: bloom2 3s ease-in-out forwards;
 }
 .petals > div:nth-child(3) {
   z-index: 4;
   background: #ab1a3f;
   top: 75px;
   height: 70px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
-  animation: bloom3 3s ease-in-out, glowing 2.5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+  animation: bloom3 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
 }
 .petals > div:nth-child(4) {
   z-index: 3;
-  background: #b81b43;
   top: 70px;
   height: 75px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
-  animation: bloom4 3s ease-in-out, glowing 2.5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+  animation: bloom4 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
 }
 .petals > div:nth-child(5) {
   z-index: 2;
-  background: #b81b43;
   top: 70px;
   height: 75px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
-  animation: bloom5 3s ease-in-out, glowing 2.5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+  animation: bloom5 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
 }
 .petals > div:nth-child(6) {
   z-index: 1;
   background: #c9204b;
   top: 65px;
   height: 70px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3);
-  animation: bloom6 3s ease-in-out, glowing 2.5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+  animation: bloom6 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
 }
 .petals > div:nth-child(7) {
   z-index: 0;
   background: #c9204b;
   top: 65px;
   height: 70px;
-  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3);
-  animation: bloom7 3s ease-in-out, glowing 2.5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+  animation: bloom7 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
 }
 
 .deadPetals > div {
@@ -195,10 +190,8 @@ body {
   position: absolute;
   width: 30px;
   height: 50px;
-  top: 53px;
   border-radius: 5px 40px 20px 40px;
   background: #054c05;
-  transform-origin: bottom;
   transform: rotate(-30deg);
   top: 180px;
   left: 80px;
@@ -208,10 +201,8 @@ body {
   position: absolute;
   width: 30px;
   height: 50px;
-  top: 53px;
   border-radius: 40px 5px 40px 20px;
   background: #054c05;
-  transform-origin: bottom;
   transform: rotate(30deg);
   top: 150px;
   left: 95px;
@@ -236,14 +227,31 @@ body {
   border-right: 5px solid #054c05;
   left: 95px;
 }
-.thorns > div:nth-child(1) {
-  top: 200px;
+.thorns > div:nth-child(1) { top: 200px; }
+.thorns > div:nth-child(2) { top: 170px; }
+.thorns > div:nth-child(4) { top: 230px; }
+
+.message {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem;
+  color: #f594b8;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #f594b8;
+  animation: typing 6s steps(80, end) forwards, blink 0.7s step-end infinite;
+  text-shadow: 0 0 5px #f594b8, 0 0 10px #f594b8;
 }
-.thorns > div:nth-child(2) {
-  top: 170px;
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 90%; }
 }
-.thorns > div:nth-child(4) {
-  top: 230px;
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
 @keyframes bloom2 {
@@ -260,31 +268,11 @@ body {
     box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
   }
 }
-@keyframes bloom3 {
-  100% {
-    transform: rotate(45deg);
-  }
-}
-@keyframes bloom4 {
-  100% {
-    transform: rotate(-20deg);
-  }
-}
-@keyframes bloom5 {
-  100% {
-    transform: rotate(20deg);
-  }
-}
-@keyframes bloom6 {
-  100% {
-    transform: rotate(-5deg);
-  }
-}
-@keyframes bloom7 {
-  100% {
-    transform: rotate(5deg);
-  }
-}
+@keyframes bloom3 { 100% { transform: rotate(45deg); } }
+@keyframes bloom4 { 100% { transform: rotate(-20deg); } }
+@keyframes bloom5 { 100% { transform: rotate(20deg); } }
+@keyframes bloom6 { 100% { transform: rotate(-5deg); } }
+@keyframes bloom7 { 100% { transform: rotate(5deg); } }
 @keyframes glowing {
   50% {
     background: #d7365f;
